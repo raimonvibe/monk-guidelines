@@ -17,7 +17,7 @@ export default function Home() {
         />
       </div>
 
-      <main id="main-content" className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-20" tabIndex={-1}>
+      <main id="main-content" className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center sm:px-6 sm:py-16" tabIndex={-1}>
         {/* Hero quote */}
         <blockquote className="font-display max-w-3xl text-2xl font-medium leading-relaxed tracking-wide text-[#f5e8d3] sm:text-4xl md:text-5xl">
           &ldquo;Listen... with the ear of your heart.&rdquo;

@@ -11,7 +11,7 @@ export default async function RulesLayout({
   return (
     <div className="min-h-screen">
       <RulesNav chapters={chapters} />
-      <main id="main-content" className="min-h-screen flex-1 pt-14 px-4 pb-10 md:pl-64 md:pr-6 md:pt-10 md:px-6" tabIndex={-1}>
+      <main id="main-content" className="min-h-screen flex-1 px-4 pb-12 pt-6 md:pl-72 md:pr-8 md:pt-10 md:pb-16" tabIndex={-1}>
         {children}
       </main>
     </div>

@@ -1,10 +1,10 @@
 # Guidelines for Christian Monks
 
-A Next.js 14+ (App Router) site for the Rule of Saint Benedict and other monastic texts. Dark manuscript theme with deep earth tones and parchment typography.
+A Next.js 16 (App Router) site for the Rule of Saint Benedict and other monastic texts. Dark manuscript theme with deep earth tones and parchment typography.
 
 ## Setup
 
-Requires **Node.js 20+**. Then:
+Requires **Node.js 20.9+** (recommend **Node 22** LTS). If you use [nvm](https://github.com/nvm-sh/nvm): `nvm use` (see `.nvmrc`). Then:
 
 ```bash
 npm install
@@ -47,5 +47,5 @@ Content is parsed with **gray-matter** (front matter) and **remark** (Markdown â
 
 ## Tech
 
-- Next.js 16 (App Router), TypeScript, Tailwind CSS v4, ESLint
+- Next.js 16 (App Router), React 19, TypeScript 5, Tailwind CSS v4, ESLint 9 (stack current 2026)
 - `gray-matter`, `remark`, `remark-html` for Markdown

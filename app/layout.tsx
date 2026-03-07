@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Crimson_Text, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import SkipLink from "@/components/SkipLink";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const crimsonText = Crimson_Text({
   variable: "--font-crimson",
@@ -32,7 +34,9 @@ export default function RootLayout({
         className={`${crimsonText.variable} ${ebGaramond.variable} antialiased bg-stone-texture gradient-manuscript min-h-screen text-[#f5e8d3] overflow-x-hidden`}
       >
         <SkipLink />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
