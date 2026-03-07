@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Guidelines for Christian Monks
 
-## Getting Started
+A Next.js 14+ (App Router) site for the Rule of Saint Benedict and other monastic texts. Dark manuscript theme with deep earth tones and parchment typography.
 
-First, run the development server:
+## Setup
+
+Requires **Node.js 20+**. Then:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Theme
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Dark mode**: Always on via `class="dark"` on `<html>`.
+- **Colors**: Parchment `#f5e8d3`, muted gold `#d4af37`, stone gradients.
+- **Fonts**: Crimson Text, EB Garamond (Google Fonts).
 
-## Learn More
+## Content
 
-To learn more about Next.js, take a look at the following resources:
+1. **Benedict**: Edit `data/rules-benedict.md`. Use `# Chapter N: Title` (or `# Prologue`) then the body. Add all 73 chapters in that format.
+2. **Augustine / Francis**: Add `data/rules-augustine.md` and `data/rules-francis.md` in the same Markdown structure; the app is set up to support them.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Content is parsed with **gray-matter** (front matter) and **remark** (Markdown → HTML).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Daily reading
 
-## Deploy on Vercel
+- Home page shows a random chapter snippet.
+- A new random chapter is chosen at **midnight** (local time) via `localStorage` timestamp.
+- API: `GET /api/daily-reading` returns `{ slug, title, excerpt }`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Images
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Place a hero image at `public/images/hero-monk.jpg` (e.g. hooded monk, dim corridor) for the home background. Optional; gradient works without it.
+- Use Pexels/Unsplash for “monk silhouette”, “monastery”, “candlelit corridor”.
+
+## Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Hero quote + daily reading |
+| `/rules` | List of chapters (sidebar) |
+| `/rules/[slug]` | Single chapter, e.g. `/rules/prologue`, `/rules/7-humility` |
+
+## Tech
+
+- Next.js 16 (App Router), TypeScript, Tailwind CSS v4, ESLint
+- `gray-matter`, `remark`, `remark-html` for Markdown
