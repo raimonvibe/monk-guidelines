@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: siteDescription,
   manifest: "/manifest.json",
   icons: {
-    apple: "/social.png",
+    apple: "/social2.png",
   },
   openGraph: {
     title: siteTitle,
