@@ -75,56 +75,80 @@ export default function SiteHeader({ chapters = [] }: Props) {
                 );
               })}
             </ul>
-            {/* Hamburger: visible on all pages when we have chapters */}
-            {hasChapters && (
-              <button
-                type="button"
-                onClick={() => setDrawerOpen((o) => !o)}
-                className="rounded p-2 text-[#a89888] hover:bg-stone-800/50 hover:text-[#f5e8d3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2"
-                aria-label={drawerOpen ? "Close chapter list" : "Open chapter list"}
-                aria-expanded={drawerOpen}
-                aria-controls="global-chapters-drawer"
-              >
-                <span className="sr-only">{drawerOpen ? "Close" : "Chapters"}</span>
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  {drawerOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            )}
+            {/* Hamburger: always visible on all pages (incl. start page) */}
+            <button
+              type="button"
+              onClick={() => setDrawerOpen((o) => !o)}
+              className="rounded p-2 text-[#a89888] hover:bg-stone-800/50 hover:text-[#f5e8d3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2"
+              aria-label={drawerOpen ? "Close chapter list" : "Open chapter list"}
+              aria-expanded={drawerOpen}
+              aria-controls="global-chapters-drawer"
+            >
+              <span className="sr-only">{drawerOpen ? "Close" : "Chapters"}</span>
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                {drawerOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </nav>
       </header>
 
-      {/* Global chapters drawer (home + any page) */}
-      {hasChapters && (
-        <>
-          <button
-            type="button"
-            className={`fixed inset-0 z-20 bg-stone-950/70 backdrop-blur-sm transition-opacity duration-200 ${drawerOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"}`}
-            onClick={() => setDrawerOpen(false)}
-            aria-label="Close chapter list"
-            tabIndex={drawerOpen ? 0 : -1}
+      {/* Global chapters drawer (home + any page) — always render so hamburger works */}
+      <button
+        type="button"
+        className={`fixed inset-0 z-20 bg-stone-950/70 backdrop-blur-sm transition-opacity duration-200 ${drawerOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"}`}
+        onClick={() => setDrawerOpen(false)}
+        aria-label="Close chapter list"
+        tabIndex={drawerOpen ? 0 : -1}
+      />
+      <aside
+        id="global-chapters-drawer"
+        role="navigation"
+        aria-label="Chapters of the Rule of Saint Benedict"
+        className={`fixed left-0 top-0 z-30 flex h-full w-full flex-col border-r border-stone-700/30 bg-stone-950/95 backdrop-blur transition-transform duration-200 ease-out sm:w-80 ${
+          drawerOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {hasChapters ? (
+          <ChapterListPanel
+            chapters={chapters}
+            onClose={() => setDrawerOpen(false)}
+            showCloseButton
           />
-          <aside
-            id="global-chapters-drawer"
-            role="navigation"
-            aria-label="Chapters of the Rule of Saint Benedict"
-            className={`fixed left-0 top-0 z-30 flex h-full w-full flex-col border-r border-stone-700/30 bg-stone-950/95 backdrop-blur transition-transform duration-200 ease-out sm:w-80 ${
-              drawerOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
-          >
-            <ChapterListPanel
-              chapters={chapters}
-              onClose={() => setDrawerOpen(false)}
-              showCloseButton
-            />
-          </aside>
-        </>
-      )}
+        ) : (
+          <div className="flex flex-col gap-4 p-6">
+            <div className="flex items-center justify-between">
+              <Link
+                href="/"
+                className="font-display text-[#a89888] text-sm hover:text-[#d4af37] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2 focus-visible:rounded"
+              >
+                ← Guidelines
+              </Link>
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                className="rounded p-2 text-[#a89888] hover:bg-stone-800/50 hover:text-[#f5e8d3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37]"
+                aria-label="Close chapter list"
+              >
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <p className="text-sm text-[#a89888]">Browse all chapters on The Rule page.</p>
+            <Link
+              href="/rules"
+              className="rounded-md border border-[#d4af37]/50 bg-stone-900/60 px-4 py-2 text-sm font-medium text-[#f5e8d3] hover:bg-stone-800/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2"
+            >
+              The Rule →
+            </Link>
+          </div>
+        )}
+      </aside>
     </>
   );
 }
