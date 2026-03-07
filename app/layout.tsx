@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${crimsonText.variable} ${ebGaramond.variable} antialiased bg-stone-texture gradient-manuscript min-h-screen text-[#f5e8d3]`}
+        className={`${crimsonText.variable} ${ebGaramond.variable} antialiased bg-stone-texture gradient-manuscript min-h-screen text-[#f5e8d3] overflow-x-hidden`}
       >
         {children}
       </body>

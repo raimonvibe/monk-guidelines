@@ -20,18 +20,18 @@ export default function RuleCard({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between px-4 py-3 text-left font-medium text-[#f5e8d3] transition hover:bg-stone-800/50"
+        className="flex w-full min-w-0 items-center justify-between gap-3 px-3 py-2.5 text-left font-medium text-[#f5e8d3] transition hover:bg-stone-800/50 sm:px-4 sm:py-3"
       >
-        <span>{title}</span>
+        <span className="min-w-0 break-words">{title}</span>
         <span
-          className={`text-[#d4af37] transition-transform ${open ? "rotate-180" : ""}`}
+          className={`shrink-0 text-[#d4af37] transition-transform ${open ? "rotate-180" : ""}`}
           aria-hidden
         >
           ▼
         </span>
       </button>
       {open && (
-        <div className="border-t border-stone-700/50 px-4 py-4">
+        <div className="border-t border-stone-700/50 px-3 py-3 sm:px-4 sm:py-4">
           {children}
         </div>
       )}

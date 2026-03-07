@@ -58,7 +58,7 @@ export default function DailyReading() {
 
   if (loading) {
     return (
-      <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-4 py-6 text-center text-[#a89888]">
+      <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-3 py-4 text-center text-sm text-[#a89888] sm:px-4 sm:py-6 sm:text-base">
         Loading today&apos;s reading...
       </div>
     );
@@ -66,15 +66,15 @@ export default function DailyReading() {
 
   if (!snippet) {
     return (
-      <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-4 py-6 text-center text-[#a89888]">
+      <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-3 py-4 text-center text-sm text-[#a89888] sm:px-4 sm:py-6 sm:text-base">
         No reading available. Add content in <code className="text-[#d4af37]">/data/rules-benedict.md</code>.
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-4 py-6">
-      <p className="mb-2 font-serif text-[#f5e8d3]/95 leading-relaxed">
+    <div className="rounded-lg border border-stone-700/50 bg-stone-900/40 px-3 py-4 sm:px-4 sm:py-6">
+      <p className="mb-2 font-serif text-sm text-[#f5e8d3]/95 leading-relaxed sm:text-base">
         &ldquo;{snippet.excerpt}&rdquo;
       </p>
       <p className="text-sm text-[#d4af37]">
