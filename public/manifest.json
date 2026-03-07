@@ -1,0 +1,17 @@
+{
+  "name": "Guidelines for Christian Monks",
+  "short_name": "Monk Guidelines",
+  "description": "The Rule of Saint Benedict—listen with the ear of your heart.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1612",
+  "theme_color": "#1a1612",
+  "icons": [
+    {
+      "src": "/social.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -28,8 +28,9 @@ export const metadata: Metadata = {
     : new URL("http://localhost:3000"),
   title: siteTitle,
   description: siteDescription,
+  manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico",
+    apple: "/social.png",
   },
   openGraph: {
     title: siteTitle,
