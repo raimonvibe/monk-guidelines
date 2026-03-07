@@ -4,6 +4,7 @@ import "./globals.css";
 import SkipLink from "@/components/SkipLink";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { getBenedictChapters } from "@/lib/markdown";
 
 const crimsonText = Crimson_Text({
   variable: "--font-crimson",
@@ -23,18 +24,19 @@ export const metadata: Metadata = {
     "The Rule of Saint Benedict, and other monastic wisdom—listen with the ear of your heart.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const chapters = await getBenedictChapters();
   return (
     <html lang="en" className="dark">
       <body
         className={`${crimsonText.variable} ${ebGaramond.variable} antialiased bg-stone-texture gradient-manuscript min-h-screen text-[#f5e8d3] overflow-x-hidden`}
       >
         <SkipLink />
-        <SiteHeader />
+        <SiteHeader chapters={chapters} />
         {children}
         <SiteFooter />
       </body>
