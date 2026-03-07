@@ -12,12 +12,12 @@ export default async function RulesPage() {
       <p className="mt-2 text-sm text-[#a89888] sm:text-base">
         Chapters and prologue. Select one to read.
       </p>
-      <ul className="mt-6 space-y-2 sm:mt-8">
+      <ul className="mt-6 space-y-2 sm:mt-8" role="list">
         {chapters.map((ch) => (
           <li key={ch.slug}>
             <Link
               href={`/rules/${ch.slug}`}
-              className="block rounded-lg border border-stone-700/50 bg-stone-900/50 px-3 py-2.5 text-sm text-[#f5e8d3] transition hover:border-[#d4af37]/40 hover:bg-stone-800/50 sm:px-4 sm:py-3 sm:text-base"
+              className="block rounded-lg border border-stone-700/50 bg-stone-900/50 px-3 py-2.5 text-sm text-[#f5e8d3] transition hover:border-[#d4af37]/40 hover:bg-stone-800/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2 sm:px-4 sm:py-3 sm:text-base"
             >
               <span className="text-[#a89888]">{ch.order + 1}.</span> {ch.title}
             </Link>

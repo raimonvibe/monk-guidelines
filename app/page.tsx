@@ -17,7 +17,7 @@ export default function Home() {
         />
       </div>
 
-      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-20">
+      <main id="main-content" className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-20" tabIndex={-1}>
         {/* Hero quote */}
         <blockquote className="font-display max-w-3xl text-2xl font-medium leading-relaxed tracking-wide text-[#f5e8d3] sm:text-4xl md:text-5xl">
           &ldquo;Listen... with the ear of your heart.&rdquo;
@@ -30,21 +30,21 @@ export default function Home() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:mt-12 sm:gap-4">
           <Link
             href="/rules"
-            className="rounded-md border border-[#d4af37]/50 bg-[#2d2620]/80 px-4 py-2.5 text-sm font-medium text-[#f5e8d3] transition hover:border-[#d4af37] hover:bg-[#3d352d]/80 sm:px-6 sm:py-3 sm:text-base"
+            className="rounded-md border border-[#d4af37]/50 bg-[#2d2620]/80 px-4 py-2.5 text-sm font-medium text-[#f5e8d3] transition hover:border-[#d4af37] hover:bg-[#3d352d]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2 sm:px-6 sm:py-3 sm:text-base"
           >
             Read the Rules
           </Link>
           <Link
             href="/rules/prologue"
-            className="rounded-md bg-[#d4af37]/20 px-4 py-2.5 text-sm font-medium text-[#d4af37] transition hover:bg-[#d4af37]/30 sm:px-6 sm:py-3 sm:text-base"
+            className="rounded-md bg-[#d4af37]/20 px-4 py-2.5 text-sm font-medium text-[#d4af37] transition hover:bg-[#d4af37]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2 sm:px-6 sm:py-3 sm:text-base"
           >
             Prologue
           </Link>
         </div>
 
         {/* Daily reading snippet */}
-        <section className="mt-16 w-full max-w-2xl sm:mt-20">
-          <h2 className="mb-3 font-display text-lg font-medium text-[#d4af37] sm:mb-4 sm:text-xl">
+        <section className="mt-16 w-full max-w-2xl sm:mt-20" aria-labelledby="daily-reading-heading">
+          <h2 id="daily-reading-heading" className="mb-3 font-display text-lg font-medium text-[#d4af37] sm:mb-4 sm:text-xl">
             Today&apos;s reading
           </h2>
           <DailyReading />
