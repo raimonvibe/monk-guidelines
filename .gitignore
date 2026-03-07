@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local Gutenberg source (script fetches or copy separately)
+scripts/gutenberg-rule.txt
