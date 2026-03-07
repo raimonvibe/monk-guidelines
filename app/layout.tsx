@@ -18,10 +18,31 @@ const ebGaramond = EB_Garamond({
   weight: ["400", "500", "600"],
 });
 
+const siteTitle = "Guidelines for Christian Monks";
+const siteDescription =
+  "The Rule of Saint Benedict, and other monastic wisdom—listen with the ear of your heart.";
+
 export const metadata: Metadata = {
-  title: "Guidelines for Christian Monks",
-  description:
-    "The Rule of Saint Benedict, and other monastic wisdom—listen with the ear of your heart.",
+  metadataBase: process.env.VERCEL_URL
+    ? new URL(`https://${process.env.VERCEL_URL}`)
+    : new URL("http://localhost:3000"),
+  title: siteTitle,
+  description: siteDescription,
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/social.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/social.png"],
+  },
 };
 
 export default async function RootLayout({
