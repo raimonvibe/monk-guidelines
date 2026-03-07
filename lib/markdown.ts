@@ -32,7 +32,7 @@ function parseChaptersFromMarkdown(
   for (const part of parts) {
     const trimmed = part.trim();
     if (!trimmed) continue;
-    const match = trimmed.match(/^#\s+(.+?)(?:\n|$)/s);
+    const match = trimmed.match(/^#\s+(.+?)(?:\n|$)/);
     const title = match ? match[1].trim() : "Untitled";
     const body = match ? trimmed.slice(match[0].length).trim() : trimmed;
     chapters.push({ title, body });
