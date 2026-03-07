@@ -68,12 +68,13 @@ export default function RulesNav({ chapters }: { chapters: Chapter[] }) {
   const searchLower = search.trim().toLowerCase();
   const filteredChapters = useMemo(() => {
     if (!searchLower) return null;
-    return chapters.filter(
+    const filtered = chapters.filter(
       (c) =>
         c.title.toLowerCase().includes(searchLower) ||
         c.slug.toLowerCase().includes(searchLower) ||
         String(c.order + 1).includes(searchLower)
     );
+    return filtered.length > 0 ? [...filtered].sort((a, b) => a.order - b.order) : [];
   }, [chapters, searchLower]);
 
   const toggleGroup = (key: string) => {
@@ -163,10 +164,26 @@ export default function RulesNav({ chapters }: { chapters: Chapter[] }) {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setSearch("");
+              }}
               placeholder="Find chapter…"
-              className="w-full rounded-md border border-stone-700/50 bg-stone-900/60 py-2 pl-8 pr-3 text-sm text-[#f5e8d3] placeholder-[#a89888]/70 focus:border-[#d4af37]/50 focus:outline-none focus:ring-1 focus:ring-[#d4af37]/40"
+              className="w-full rounded-md border border-stone-700/50 bg-stone-900/60 py-2 pl-8 pr-8 text-sm text-[#f5e8d3] placeholder-[#a89888]/70 focus:border-[#d4af37]/50 focus:outline-none focus:ring-1 focus:ring-[#d4af37]/40"
               aria-label="Search chapters"
+              aria-describedby={search.trim() ? "search-results-count" : undefined}
             />
+            {search.trim() && (
+              <button
+                type="button"
+                onClick={() => setSearch("")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[#a89888] hover:bg-stone-800/50 hover:text-[#f5e8d3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4af37] focus-visible:outline-offset-2"
+                aria-label="Clear search"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
 
@@ -177,7 +194,7 @@ export default function RulesNav({ chapters }: { chapters: Chapter[] }) {
           {filteredChapters !== null ? (
             /* Search results: flat list */
             <div className="space-y-1">
-              <p className="mb-2 text-xs text-[#a89888]">
+              <p id="search-results-count" className="mb-2 text-xs text-[#a89888]" aria-live="polite">
                 {filteredChapters.length} of 74
               </p>
               {filteredChapters.length === 0 ? (
