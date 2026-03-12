@@ -3,6 +3,8 @@
 
 **Calm • Minimal • Focused Development**
 
+![Monk Guidelines](monk.png)
+
 🌐 **Live Website:**\
 https://monk-guidelines.vercel.app/
 ------------------------------------------------------------------------
