@@ -4,7 +4,7 @@
 **Calm • Minimal • Focused Development**
 
 🌐 **Live Website:**\
-[(https://monk-guidelines.vercel.app/)]
+https://monk-guidelines.vercel.app/
 ------------------------------------------------------------------------
 
 ## 🌿 About
