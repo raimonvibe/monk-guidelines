@@ -1,9 +1,4 @@
-```{=html}
-<p align="center">
-```
-`<img src="monk.png" alt="Monk Guidelines" width="260">`{=html}
-```{=html}
-</p>
+
 ```
 # 🧘 Monk Guidelines
 
