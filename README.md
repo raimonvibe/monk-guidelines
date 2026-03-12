@@ -1,5 +1,4 @@
 
-```
 # 🧘 Monk Guidelines
 
 **Calm • Minimal • Focused Development**
@@ -101,8 +100,7 @@ MIT License
 
 ------------------------------------------------------------------------
 
-```{=html}
-<p align="center">
+
 ```
 Built with calm focus 🧘
 ```{=html}
